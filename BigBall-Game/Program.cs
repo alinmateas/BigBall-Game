@@ -48,17 +48,6 @@ namespace BigBall_Game
 
             Engine.Start(listaBile);
 
-
-            //Console.Write("Introduceti numarul de Repelent Balls. ");
-            //int regularBallsCount = int.Parse(Console.ReadLine());
-            //RepelentBall repelentBall = new RepelentBall();
-            //Console.Write("Introduceti numarul de Repelent Balls. ");
-            //int regularBallsCount = int.Parse(Console.ReadLine());
-            //RepelentBall repelentBall = new RepelentBall();
-            //Console.Write("Introduceti numarul de Repelent Balls. ");
-            //int regularBallsCount = int.Parse(Console.ReadLine());
-            //RepelentBall repelentBall = new RepelentBall();
-            
         }
     }
 }

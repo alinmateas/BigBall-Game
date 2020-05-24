@@ -10,31 +10,50 @@ namespace BigBall_Game
         {
             while(true)
             {
-                for (int i = 0; i < listaBile.Count; i++)
-                {
-                    for (int j = 0; j < listaBile.Count; j++)
-                    {
-                        if (i == j) continue;
+                moveBalls(listaBile);
+                
+               
+                VerificariColiziuni(listaBile);
 
-                        if(Coliziune(listaBile[i],listaBile[j]))
-
-                    }
-                }
-
-
-                if (verificareRegular(listaBile))
+                if (!verificareRegular(listaBile))
                 {
                     Console.Write("Nu mai exista regular balls");
                     break;
                 }
 
             }
-            
+
+        }
+
+        private static void VerificariColiziuni(List<Ball> listaBile)
+        {
+            for (int i = 0; i < listaBile.Count; i++)
+            {
+                for (int j = 0; j < listaBile.Count; j++)
+                {
+                    if (i == j) continue;
+
+                    if (Coliziune(listaBile[i], listaBile[j]))
+                    {
+                        listaBile[i].Inghitire(listaBile[j]);
+                    }
+
+                }
+              
+            }
+        }
+
+        private static void moveBalls(List<Ball> listaBile)
+        {
+            foreach (var item in listaBile)
+            {
+                item.Move();
+            }
         }
 
         private static bool Coliziune(Ball ball1, Ball ball2)
         {
-            bool areBallsFarCrossing = false;
+            bool intersectie = false;
 
             int x1 = ball1.Pozitie.X;
             int y1 = ball1.Pozitie.Y;
@@ -46,11 +65,11 @@ namespace BigBall_Game
             double d = Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
             if (d <= raza)
             {
-                areBallsFarCrossing = true;
-                Console.WriteLine($"Coliziune intre {ball1.GetType()} si {ball2.GetType()} ")
+                intersectie = true;
+                Console.WriteLine($"Coliziune intre {ball1.GetType()} si {ball2.GetType()} ");
             }
 
-            return areBallsFarCrossing;
+            return intersectie;
         }
 
         private static bool verificareRegular(List<Ball> bile)

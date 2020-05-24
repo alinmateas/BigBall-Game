@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace BigBall_Game
 {
@@ -11,12 +12,12 @@ namespace BigBall_Game
         private Color culoare;
         private bool exista;
 
-        public bool Exista { get { return exista; } }
+        public virtual bool Exista { get { return exista; } set { exista = value; } }
 
-        public Point Pozitie { get { return pozitie; } }
-        public int Raza { get { return raza; } }
+        public virtual Point Pozitie { get { return pozitie; } }
+        public virtual int Raza { get { return raza; } set { raza = value; } }
 
-        public void Move()
+        public virtual void Move()
         {
             pozitie.X += vitezaX;
             if (pozitie.X < 0)
@@ -37,6 +38,11 @@ namespace BigBall_Game
             {
                 vitezaY = -vitezaY;
             }
+        }
+
+        public virtual void Inghitire(Ball ball)
+        {
+           
         }
     }
 }
